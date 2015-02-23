@@ -135,4 +135,23 @@ void AgentGraph::Detect() {
 
 void AgentGraph::Resolve() {}
 
-void AgentGraph::Move() {}
+void AgentGraph::Move() {
+
+	int max_length = 0;
+	for (int a = 0; a < numAgents; a++) {
+		if (agent_paths[a].size() > max_length) { 
+			max_length = agent_paths[a].size();
+		}
+	}
+
+	for (int t = 0; t < max_length; t++)
+	{
+		for (int a=0; a < numAgents; a++) {
+
+			if (agent_paths[a].size() > t)
+				agentList[a].currLocation = agent_paths[a][t];
+
+		}
+	}
+
+}

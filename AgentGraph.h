@@ -96,6 +96,7 @@ struct Agent{
 	int start;
 	int dest;
 	int movingCost;
+	int currLocation;
 
 };
 

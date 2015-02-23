@@ -22,6 +22,7 @@ int main(int argc, char **argv)
 	AgentGraph g;
 	g.Plan();
 	g.Detect();
+	g.Move();
 
 	return 0;
   
