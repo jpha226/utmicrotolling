@@ -100,6 +100,15 @@ struct Agent{
 
 };
 
+struct Conflict {
+
+	int T;
+	int V;
+	int a1;
+	int a2;
+
+};
+
 /*typedef adjacency_list<listS, vecS, undirectedS, no_property,
                     property<edge_weight_t, cost> > mygraph_t;
 typedef property_map<mygraph_t, edge_weight_t>::type WeightMap;
@@ -125,11 +134,11 @@ class AgentGraph {
 		void Move();
 	
 		typedef adjacency_list<listS, vecS, undirectedS, no_property,
-                    property<edge_weight_t, cost> > mygraph_t;
-		typedef property_map<mygraph_t, edge_weight_t>::type WeightMap;
-		typedef mygraph_t::vertex_descriptor vertex;
-		typedef mygraph_t::edge_descriptor edge_descriptor;
-		typedef mygraph_t::vertex_iterator vertex_iterator;
+                    property<edge_weight_t, cost> > Graph;
+		typedef property_map<Graph, edge_weight_t>::type WeightMap;
+		typedef Graph::vertex_descriptor vertex;
+		typedef Graph::edge_descriptor edge_descriptor;
+		typedef Graph::vertex_iterator vertex_iterator;
 		typedef std::pair< int, int > edge;
 
 	private:
@@ -137,14 +146,15 @@ class AgentGraph {
 		int numAgents;
 		int numNodes;	
 		int numEdges;
-		mygraph_t *graph;
+		Graph *graph;
 		WeightMap weightmap;
 
 		// Lists for agents
-		std::vector <Agent> agentList;
-		std::vector <std::vector <vertex> > agent_paths;
+		std::vector <Agent> agentList; 
+		std::vector <std::vector <vertex> > agent_paths; // Maintains the best paths for the current penalty table
 		std::vector <edge> edgeList;
 		std::vector <int> weights;
+		std::vector <Conflict> conflictList; // Maintains the current set of conflicts
 };
 
 

@@ -23,7 +23,8 @@ int main(int argc, char **argv)
 	g.Plan();
 	g.Detect();
 	g.Move();
-
+	g.Resolve();
+	g.Plan();
 	return 0;
   
 }
